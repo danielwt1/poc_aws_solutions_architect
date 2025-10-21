@@ -1,0 +1,45 @@
+openapi: 3.0.1
+info:
+  title: File API
+  version: 1.0.0
+paths:
+  /files/{id}:
+    get:
+      summary: Obtener información de un archivo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Información del archivo obtenida correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileDto'
+        '404':
+          description: Archivo no encontrado
+components:
+  schemas:
+    FileDto:
+      type: object
+      properties:
+        fileId:
+          type: string
+          format: uuid
+        creationDate:
+          type: string
+          format: date-time
+        modificationDate:
+          type: string
+          format: date-time
+        fileName:
+          type: string
+      required:
+        - fileId
+        - creationDate
+        - modificationDate
+        - fileName
