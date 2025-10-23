@@ -33,6 +33,9 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
     implementation 'org.mapstruct:mapstruct:1.6.3'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation("software.amazon.awssdk:sqs:2.35.11")
+    implementation("software.amazon.awssdk:sso:2.13.15")
+    implementation("software.amazon.awssdk:ssooidc:2.17.94")
     implementation("org.openapitools:openapi-generator:7.16.0")
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation("io.github.openfeign:feign-hc5:13.6")
