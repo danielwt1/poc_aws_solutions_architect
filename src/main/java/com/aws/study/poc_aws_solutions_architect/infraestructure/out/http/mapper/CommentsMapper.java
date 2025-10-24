@@ -5,10 +5,12 @@ import com.aws.study.poc_aws_solutions_architect.infraestructure.out.http.dto.Po
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface CommentsMapper {
     PostDto toDto(CommentsModel commentsModel);
-    CommentsModel toModel(PostDto postDto);
+    List<CommentsModel> toModel(List<PostDto> postDto);
 }

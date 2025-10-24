@@ -1,6 +1,9 @@
 package com.aws.study.poc_aws_solutions_architect.config;
 
 import com.aws.study.poc_aws_solutions_architect.config.executor.BoundedExecutor;
+import com.aws.study.poc_aws_solutions_architect.domain.ports.out.CommentsPort;
+import com.aws.study.poc_aws_solutions_architect.domain.ports.out.PushToEventBus;
+import com.aws.study.poc_aws_solutions_architect.domain.usecase.CommentsUseCase;
 import feign.Client;
 import feign.hc5.ApacheHttp5Client;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -21,6 +24,12 @@ import java.util.concurrent.Executors;
 public class BeansConfiguration {
 
     private final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
+
+
+    @Bean
+    public CommentsUseCase commentsUseCase(CommentsPort commentsPort, PushToEventBus pushToEventBus) {
+        return new CommentsUseCase(commentsPort, pushToEventBus);
+    }
 
     @Bean
     public Client feignClient() {
